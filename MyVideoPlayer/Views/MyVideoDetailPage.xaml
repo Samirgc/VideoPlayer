@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+               xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:roxv="clr-namespace:Rox;assembly=Rox.Xamarin.Video.Portable"
+              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+            xmlns:customControls="clr-namespace:MyVideoPlayer.Controls;assembly=MyVideoPlayer"
+             NavigationPage.HasNavigationBar="True"
+              ios:Page.UseSafeArea="true"
+           BackgroundColor="Black"
+             x:Class="MyVideoPlayer.Views.MyVideoDetailPage" 
+            >
+   
+    
+    <ContentPage.Content >
+       
+
+            <Grid BackgroundColor="Black">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"  />
+                    
+                    <RowDefinition x:Name="MyRow" Height="*" />
+                    
+            </Grid.RowDefinitions>
+
+
+                <roxv:VideoView  Grid.Row="0" LoopPlay="True" AutoPlay="True" x:Name="myroxy" ShowController="True" />
+
+
+            <StackLayout Grid.Row="1" x:Name="MyStack" BackgroundColor="#393939">
+                 
+                  <ListView   x:Name="Playlist" HasUnevenRows="True" ItemsSource="{Binding MyListCollector}">
+                        <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <customControls:ExtendedViewCell SelectedBackgroundColor="#393939" >
+                            <ViewCell.View>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+
+                                            <ColumnDefinition Width="120"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+
+                                        <Image Source="{Binding ThumbnailUrl}"  WidthRequest="60" HeightRequest="60" Grid.Row="0" Grid.Column="0"/>
+
+                                        <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="StartAndExpand">
+                                            <Label Text="{Binding Title}" TextColor="White" Margin="0,5,0,0" FontSize="15"/>
+                                            <Label Text="{Binding ChannelTitle}" Margin="0,-5,0,0" TextColor="#DCDCDC" FontSize="13"/>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding PublishedAt}" TextColor="#DCDCDC" FontSize="13"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Grid>
+                                  
+                            </ViewCell.View>
+                        </customControls:ExtendedViewCell>
+
+                        </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    
+                </StackLayout>
+
+            </Grid>
+
+
+
+   
+    </ContentPage.Content>
+
+</ContentPage>

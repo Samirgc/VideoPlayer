@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyVideoPlayer.Views.MyVideoPlayerPage"
+              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+              xmlns:customControls="clr-namespace:MyVideoPlayer.Controls;assembly=MyVideoPlayer"
+             Title="Awesome Video Player App"
+    ios:Page.UseSafeArea="true">
+    <ListView  ItemsSource="{Binding MyListCollector}"  HasUnevenRows="True"  SeparatorVisibility="None" SeparatorColor="White" ItemTapped="Handle_ItemTapped" >
+    <ListView.ItemTemplate>
+
+            <DataTemplate>
+                <customControls:ExtendedViewCell SelectedBackgroundColor="White" >
+                    <ViewCell.View>
+                       
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                           
+                          <Image Source="{Binding ThumbnailUrl}" Aspect="AspectFill" HorizontalOptions="FillAndExpand"/>
+
+                            <Frame Margin="2,-6,2,3"  BorderColor="#DCDCDC">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+
+                                        <ColumnDefinition Width="60" />
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <Image Source="{Binding AuthorCircleImage}" HeightRequest="20" WidthRequest="20" Grid.Row="0" Grid.Column="0"/>
+
+                                    <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="StartAndExpand">
+                                        <Label Text="{Binding Title}" TextColor="Black" Margin="0,5,0,0" FontSize="15"/>
+                                        <Label Text="{Binding ChannelTitle}" Margin="0,-5,0,0" TextColor="#767676" FontSize="13"/>
+                                        <StackLayout Orientation="Horizontal">
+
+
+                                            <Label Text="{Binding PublishedAt}" TextColor="#767676" FontSize="13"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Grid>
+
+                            </Frame>
+                        </StackLayout>
+                       
+                    </ViewCell.View>
+                </customControls:ExtendedViewCell>
+            </DataTemplate>
+
+        </ListView.ItemTemplate>
+</ListView>
+
+</ContentPage>
